@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>dropdown Menu</title>
+</head>
+
+<body>
+  <div class="dropdown">
+    <div class="select">
+      <span class="selected">Personal</span>
+      <div class="caret"></div>
+    </div>
+    <ul class="menu">
+      <li class="actie">Personal</li>
+      <li>Card</li>
+      <li>Invoice</li>
+      <li>CHS Certificate</li>
+      <li>Attestation</li>
+      <li>Diploma</li>
+      <li>Booklet</li>
+      <li>Contract</li>
+      <li>Sponsership</li>
+    </ul>
+  </div>
+
+  <script>
+    const dropdown = document.querySelectorAll('.dropdown');
+
+    dropdown.forEach(dropdown => {
+      const select = dropdown.querySelector('.select');
+      const caret = dropdown.querySelector('.caret');
+      const menu = dropdown.querySelector('.menu');
+      const options = dropdown.querySelectorAll('.menu li');
+      const selected =dropdown.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+        select.classList.toggle('select-clicked');
+        caret.classList.toggle('caret-rotate');
+        menu.classList.toggle('menu-open');
+      });
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          selected.innerText = option.innerText;
+          select.classList.remove('select-clicked');
+          caret.classList.remove('caret-rotate');
+          menu.classList.remove('menu-open');
+
+          options.forEach(option => {
+            option.classList.remove('active');
+          });
+          option.classList.add('active');
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>
